@@ -76,6 +76,14 @@
     });
   };
 
+  // Guide: neutralize mismatched @font-face brand names toward fonts.css stacks
+  if (/\/fmp\/guide(\/|$)/.test(path)) {
+    const style = document.createElement('style');
+    style.dataset.fmpGuideFonts = '1';
+    style.textContent = `:root{--font-d:"DM Sans",ui-sans-serif,system-ui,sans-serif;--font-b:"DM Sans",ui-sans-serif,system-ui,sans-serif;--font-m:"JetBrains Mono",ui-monospace,monospace}body,.brand h1,h2,h3{font-family:var(--font-b)}`;
+    document.head.appendChild(style);
+  }
+
   const mount = () => {
     upgradeToggle();
     document.querySelectorAll('select#theme, select[data-fmp-theme]').forEach(bindSelect);
