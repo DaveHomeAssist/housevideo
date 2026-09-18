@@ -1,2 +1,9 @@
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /404.html
+Disallow: /transfer.html
+Disallow: /fmp-index/
+Disallow: /fmp/
+Disallow: /fmp-walk/
+Disallow: /fmpwalk/
+Sitemap: https://housevideo.app/sitemap.xml
