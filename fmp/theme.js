@@ -37,3 +37,13 @@
   document.addEventListener('DOMContentLoaded', apply);
   apply();
 })();
+
+// Shared FMP chrome: upgrade theme toggles to Light/Dark/Auto and ensure av-theme assets.
+(() => {
+  if (document.querySelector('script[data-fmp-chrome]')) return;
+  const script = document.createElement('script');
+  script.src = '/fmp/chrome.js?v=unify1';
+  script.defer = true;
+  script.dataset.fmpChrome = '1';
+  (document.head || document.documentElement).appendChild(script);
+})();
