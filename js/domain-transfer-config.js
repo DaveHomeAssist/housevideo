@@ -1,1 +1,1 @@
-window.SBD_DOMAIN_TRANSFER={"site":"housevideo","name":"FMP Video Operations","domain":"housevideo.app","home":"/fmp/","sourceOrigin":"https://systembydave.com","keys":[],"prefixes":["fmp"],"indexedDB":["fmpPhotosV1"]};
+window.SBD_DOMAIN_TRANSFER={"site":"housevideo","name":"FMP Video Operations","domain":"housevideo.app","home":"/fmp/","sourceOrigin":"https://systembydave.com","sourceOrigins":["https://systembydave.com"],"keys":[],"prefixes":["fmp"],"indexedDB":["fmpPhotosV1"]};
