@@ -36,3 +36,7 @@ html[data-av-theme] .tabs a[aria-current="page"],
 html[data-av-theme] button[aria-pressed="true"] {
   color: var(--av-primary-ink, #fffaf4);
 }
+
+/* In house references, ink means body text. AV tools use the root ink alias
+   for text on primary buttons; keep that alias from reaching this content. */
+html[data-av-theme] body { --ink: var(--av-text); }

@@ -1,4 +1,6 @@
 /* Shared FMP top chrome for static Pages. Color comes from av-theme tokens. */
+:root[data-fmp-guide-fonts] { --font-d: "DM Sans", ui-sans-serif, system-ui, sans-serif; --font-b: "DM Sans", ui-sans-serif, system-ui, sans-serif; --font-m: "JetBrains Mono", ui-monospace, monospace; }
+:root[data-fmp-guide-fonts] :is(body, .brand h1, h2, h3) { font-family: var(--font-b); }
 .fmp-chrome,
 header.top {
   display: flex;
@@ -34,8 +36,10 @@ header.top nav [aria-current="page"],
 header.top nav > span:last-child { color: var(--av-muted, var(--muted, #62594f)); }
 .fmp-chrome nav .crumb-sep,
 header.top nav > span:not([aria-current]) { color: var(--av-dim, #70645a); }
+.theme-label,
 .fmp-chrome .theme-label,
 header.top .theme-label { display: inline-flex; align-items: center; gap: 8px; margin: 0; }
+.theme-label select[data-fmp-theme],
 .fmp-chrome select,
 header.top select#theme,
 header.top select[data-fmp-theme] {
@@ -54,3 +58,6 @@ header.top select[data-fmp-theme] {
 @media (max-width: 680px) {
   .fmp-chrome, header.top { padding: 8px 16px; gap: 10px; }
 }
+
+.theme-label > .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.r-site-nav .theme-label, .header-actions .theme-label { margin-left: auto; }

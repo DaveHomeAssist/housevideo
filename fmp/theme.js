@@ -38,12 +38,13 @@
   apply();
 })();
 
-// Shared FMP chrome: upgrade theme toggles to Light/Dark/Auto and ensure av-theme assets.
+// Keep the published chrome in canonical source. Resolve beside this script so
+// the raw source and the managed /fmp/ export use the same implementation.
 (() => {
   if (document.querySelector('script[data-fmp-chrome]')) return;
   const script = document.createElement('script');
-  script.src = '/fmp/chrome.js?v=unify1';
+  script.src = new URL('chrome.js', document.currentScript.src).href;
   script.defer = true;
   script.dataset.fmpChrome = '1';
-  (document.head || document.documentElement).appendChild(script);
+  document.head.appendChild(script);
 })();

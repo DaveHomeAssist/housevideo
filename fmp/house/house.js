@@ -29,7 +29,8 @@ addEventListener('hashchange', () => showPanel(location.hash));
 addEventListener('popstate', () => showPanel(location.hash));
 
 function syncThemeLabel() {
-  const themeEl = $('#theme'); if (themeEl && themeEl.tagName !== 'SELECT') themeEl.textContent = window.fmpTheme.theme === 'dark' ? 'Light mode' : 'Dark mode';
+  const control = $('#theme');
+  if (control && control.tagName !== 'SELECT') control.textContent = window.fmpTheme.theme === 'dark' ? 'Light mode' : 'Dark mode';
 }
 // The existing suite controller handles preference persistence and delegated toggles.
 document.addEventListener('fmp-theme', syncThemeLabel);

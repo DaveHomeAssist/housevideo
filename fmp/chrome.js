@@ -25,9 +25,9 @@
   if (inFmp || inBackfocus) {
     ensureStylesheet('/css/fonts.css');
     ensureStylesheet('/css/av-theme.css');
-    ensureStylesheet('/fmp/chrome.css?v=unify1');
+    ensureStylesheet('/fmp/chrome.css');
   }
-  if (inHouseFamily) ensureStylesheet('/fmp/house/house-tokens.css?v=unify1');
+  if (inHouseFamily) ensureStylesheet('/fmp/house/house-tokens.css');
 
   const bindSelect = (el) => {
     if (!el || el.dataset.fmpThemeBound === '1' || !window.fmpTheme) return;
@@ -78,10 +78,7 @@
 
   // Guide: neutralize mismatched @font-face brand names toward fonts.css stacks
   if (/\/fmp\/guide(\/|$)/.test(path)) {
-    const style = document.createElement('style');
-    style.dataset.fmpGuideFonts = '1';
-    style.textContent = `:root{--font-d:"DM Sans",ui-sans-serif,system-ui,sans-serif;--font-b:"DM Sans",ui-sans-serif,system-ui,sans-serif;--font-m:"JetBrains Mono",ui-monospace,monospace}body,.brand h1,h2,h3{font-family:var(--font-b)}`;
-    document.head.appendChild(style);
+    document.documentElement.dataset.fmpGuideFonts = '1';
   }
 
   const mount = () => {
