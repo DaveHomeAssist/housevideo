@@ -1,0 +1,6 @@
+/* Align legacy --rust tokens to av-theme accent (#9e432b). */
+:root {
+  --rust: #9e432b;
+  --rust-light: #b5654a;
+  --rust-dark: #7d3322;
+}
