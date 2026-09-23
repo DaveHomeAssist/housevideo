@@ -1,0 +1,41 @@
+name: recon-apply-pr-content
+on:
+  push:
+    paths:
+      - 'fmp/.recon-payload/APPLY'
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ia-chrome-followup
+          fetch-depth: 0
+      - name: Decode bundle and commit
+        run: |
+          set -eux
+          python3 << 'PY'
+          import base64, json, pathlib, zlib
+          root = pathlib.Path('fmp/.recon-payload')
+          parts = sorted(root.glob('part-*.txt'))
+          blob = ''.join(p.read_text().strip() for p in parts)
+          data = json.loads(zlib.decompress(base64.b64decode(blob)))
+          for path, b64 in data.items():
+            p = pathlib.Path(path)
+            p.parent.mkdir(parents=True, exist_ok=True)
+            raw = base64.b64decode(b64)
+            p.write_bytes(raw)
+            print(path, len(raw))
+          PY
+          rm -rf fmp/.recon-payload
+          rm -f fmp/.recon-amp-probe3.html fmp/.recon-amp-probe4.html fmp/.recon-amp-probe5.html
+          rm -f fmp/.recon-at-path-test fmp/.recon-repo-uri-test
+          rm -f .github/workflows/recon-align-hub.yml .github/workflows/recon-apply-pr-content.yml
+          git config user.email "infodave53@Gmail.com"
+          git config user.name "DaveHomeAssist"
+          git add -A
+          git status
+          git commit -m "recon: combined hub — /fmp/backfocus + URSA G2 + Show Console/SHOW/SHEET"
+          git push origin HEAD:ia-chrome-followup
