@@ -1,0 +1,29 @@
+name: recon-align-hub
+on:
+  push:
+    paths:
+      - '.github/workflows/recon-align-hub.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  align:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ia-chrome-followup
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Align hub to main and cleanup probes
+        run: |
+          set -eux
+          git fetch origin main
+          git checkout origin/main -- fmp/index.html
+          rm -f fmp/.recon-amp-probe3.html fmp/.recon-amp-probe4.html fmp/.recon-amp-probe5.html fmp/.recon-at-path-test fmp/.recon-repo-uri-test
+          git config user.email "infodave53@Gmail.com"
+          git config user.name "DaveHomeAssist"
+          git add -A fmp/index.html fmp/.recon-amp-probe3.html fmp/.recon-amp-probe4.html fmp/.recon-amp-probe5.html fmp/.recon-at-path-test fmp/.recon-repo-uri-test || true
+          git status
+          git commit -m "recon: align hub to main to clear merge conflict" || echo "nothing to commit"
+          git push origin HEAD:ia-chrome-followup
