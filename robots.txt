@@ -4,4 +4,5 @@ Disallow: /404.html
 Disallow: /transfer.html
 Disallow: /fmp-index/
 Disallow: /fmp/
+Disallow: /camera-sim/
 Sitemap: https://housevideo.app/sitemap.xml
