@@ -5,4 +5,11 @@ Disallow: /transfer.html
 Disallow: /fmp-index/
 Disallow: /fmp/
 Disallow: /camera-sim/
+Allow: /fmp/$
+Allow: /fmp/*/$
+Allow: /fmp/*.html$
+Allow: /camera-sim/$
+Allow: /camera-sim/*.html$
+Allow: /camera-sim/og.png$
+Allow: /fmp/fmp-social-card.png$
 Sitemap: https://housevideo.app/sitemap.xml
