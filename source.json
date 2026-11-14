@@ -3,7 +3,7 @@
   "site": "housevideo",
   "domain": "housevideo.app",
   "sourceRepository": "DaveHomeAssist/system-by-dave",
-  "sourceCommit": "b3b2fb41d8902b3f376d1c58186e6fe75145a026",
+  "sourceCommit": "da46fcb3e352a9189b51dcdfcff111080db2ec87",
   "cutover": true,
   "files": 139,
   "artifactSha256": "2b9fd5f6fee545ce7424494757df76aa553881a37f1474e531efb18d47fa104d"
